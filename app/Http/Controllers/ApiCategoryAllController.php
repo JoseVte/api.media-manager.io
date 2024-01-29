@@ -9,7 +9,7 @@ class ApiCategoryAllController extends Controller
 {
     public function __invoke()
     {
-        return response()->json(array_map(static fn(ImageCategory $imageCategory) => [
+        return response()->json(array_map(static fn (ImageCategory $imageCategory) => [
             'name' => Str::ucfirst($imageCategory->value),
             'value' => $imageCategory->value,
         ], ImageCategory::cases()));

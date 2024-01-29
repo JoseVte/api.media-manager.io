@@ -30,7 +30,7 @@ class ApiImageUploadController extends Controller
 
         $adapter = new Filesystem($this->adapter);
 
-        $file = $request->file('file');
+        $file = $request->file('file') ?: $request->get('file');
         $extension = $file->clientExtension();
 
         $fileCount = 1;

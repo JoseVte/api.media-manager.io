@@ -19,7 +19,6 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-
 $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('categories', 'ApiCategoryAllController');
 
@@ -28,4 +27,6 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('images/{category}', 'ApiImageCategoryController');
 
     $router->post('images/upload', 'ApiImageUploadController');
+
+    $router->delete('images/{imageId}', 'ApiImageDeleteController');
 });

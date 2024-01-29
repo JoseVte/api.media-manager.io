@@ -3,16 +3,19 @@
 namespace App\Models;
 
 use App\Enums\ImageCategory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'name',
         'category',
         'original_name',
         'path',
-        'mimetype'
+        'mimetype',
     ];
 
     protected $appends = [
@@ -20,7 +23,7 @@ class Image extends Model
     ];
 
     protected $casts = [
-        'category' => ImageCategory::class
+        'category' => ImageCategory::class,
     ];
 
     public function getUrlAttribute()

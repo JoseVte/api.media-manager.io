@@ -11,8 +11,6 @@ class IpMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
@@ -21,12 +19,12 @@ class IpMiddleware
 
         $checkIp = false;
         foreach ($request->getClientIps() as $ip) {
-            if (!$checkIp && IpUtils::checkIp($ip, $allowedIps)) {
+            if (! $checkIp && IpUtils::checkIp($ip, $allowedIps)) {
                 $checkIp = true;
             }
         }
 
-        if (!$checkIp) {
+        if (! $checkIp) {
             abort(401);
         }
 
