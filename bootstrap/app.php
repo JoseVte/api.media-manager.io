@@ -74,6 +74,7 @@ $app->configure('app');
 
 $app->middleware([
     \App\Http\Middleware\IpMiddleware::class,
+    \App\Http\Middleware\HttpsProtocol::class,
     \Nord\Lumen\Cors\CorsMiddleware::class,
 ]);
 
@@ -92,6 +93,7 @@ $app->middleware([
 |
 */
 
+$app->register(\App\Providers\AppServiceProvider::class);
 $app->register(\Nord\Lumen\Cors\CorsServiceProvider::class);
 
 /*
